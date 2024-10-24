@@ -11,8 +11,7 @@
 #' @importFrom ggplot2 ggplot aes geom_bar geom_text facet_wrap facet_grid labs theme_minimal theme element_text scale_y_continuous
 #'
 #' @export
-#'
-# Load necessary libraries
+#' @name libraries
 library(shiny)
 library(tidyverse)
 library(shinythemes)
@@ -26,7 +25,6 @@ data("coffee_filtered", package = "Coffee")
 #' It outputs two bar plots: one for Age Group distribution by gender and another for Favorite Coffee distribution by age and gender.
 #'
 #' @return A Shiny UI object
-#'
 ui <- fluidPage(theme = shinytheme("journal"),
                 titlePanel("Coffee Preferences Explorer"),
                 shinythemes::themeSelector(),
@@ -163,5 +161,5 @@ server <- function(input, output) {
 #'
 #' This function launches the Shiny app for exploring coffee consumption patterns.
 #' @export
-#'
+#' @name functioncall
 shinyApp(ui = ui, server = server)

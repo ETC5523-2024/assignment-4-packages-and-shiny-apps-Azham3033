@@ -55,6 +55,7 @@
 #' }
 #'
 #' @export
+#' @name tidyverse
 library(tidyverse)
 
 # Load raw data
