@@ -1,0 +1,238 @@
+---
+title: "Guide to Using the Coffee Preferences Shiny App"
+Author: "Azham Hassan Venghat"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Coffee}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(Coffee)
+```
+
+------------------------------------------------------------------------
+
+### **Introduction**
+
+The Coffee Preferences Shiny App allows users to explore coffee consumption patterns across different age groups, favorite coffee types, and genders. The app generates graphical representations of the data based on the filters you select. This guide will walk you through how to interact with the app’s interface and explore the survey data through visualizations.
+
+### **App Layout**
+
+The app consists of two main sections: 1. **Sidebar Panel**: Where you can choose filters and options to customize the data displayed in the graphs. 2. **Main Panel**: Where the graphs will be displayed based on the selected filters.
+
+Here’s a step-by-step guide to using each component of the app.
+
+------------------------------------------------------------------------
+
+### **1. Sidebar Panel**
+
+The **Sidebar Panel** allows you to select filters for narrowing down the coffee survey data. It includes dropdown menus that allow you to filter by **Age Group**, **Favorite Coffee Type**, and **Gender**.
+
+#### **Components:**
+
+-   **Age Group Dropdown**: Select a specific age group from a list of predefined options, such as:
+
+    -   `<18 years old`
+    -   `18-24 years old`
+    -   `25-34 years old`
+    -   `35-44 years old`
+    -   `45-54 years old`
+    -   `55-64 years old`
+    -   `>65 years old`
+
+    **How to Use**: Click on the dropdown menu labeled “Age Group” and select one of the available options. The graphs displayed in the Main Panel will update accordingly.
+
+-   **Favorite Coffee Type Dropdown**: Select a specific favorite coffee type from the survey dataset, such as:
+
+    -   `Latte`
+    -   `Cappuccino`
+    -   `Espresso`
+    -   `Iced Coffee`
+    -   `Regular drip coffee`
+    -   And others
+
+    **How to Use**: Click on the dropdown menu labeled “Favorite Coffee Type” and select the coffee type of interest. The graphs displayed in the Main Panel will be filtered based on both the selected age group and favorite coffee type.
+
+-   **Gender Dropdown**: Select the respondent's gender:
+
+    -   `Male`
+    -   `Female`
+
+    **How to Use**: Click on the dropdown menu labeled “Gender” and select either `Male` or `Female`. The graph will update to show data relevant to the chosen gender, alongside the selected age group and favorite coffee type.
+
+------------------------------------------------------------------------
+
+### **2. Main Panel**
+
+The **Main Panel** displays the **graphs** based on the filters applied in the Sidebar Panel. These graphs visualize key information such as coffee preferences across different demographics.
+
+#### **Graphical Output**:
+
+-   **Favorite Coffee by Gender**: One of the graphs shows how different coffee types (like Americano, Latte, Espresso) are preferred by males and females, with bars representing the number of respondents for each coffee type within each gender.
+
+-   **Age Distribution by Gender**: Another graph displays the distribution of respondents across age groups, with separate bars for males and females. Each bar shows the count of respondents in that age group.
+
+------------------------------------------------------------------------
+
+### **Example Use Case**
+
+Here’s an example of how to use the app:
+
+1.  **Select Age Group**: You want to see the coffee preferences for respondents aged 25-34 years old. From the “Age Group” dropdown in the sidebar, select `25-34 years old`.
+2.  **Select Favorite Coffee Type**: You are also interested in those who prefer `Latte`. Select `Latte` from the “Favorite Coffee Type” dropdown.
+3.  **Select Gender**: You want to view data for female respondents. Select `Female` from the “Gender” dropdown.
+4.  **View Results**: The graph in the Main Panel will update to show how many female respondents aged 25-34 prefer Latte, compared to other coffee types.
+
+------------------------------------------------------------------------
+
+### **Additional Features**
+
+Depending on future extensions of the app, additional components may include: - **Interactivity**: The graphs may be made interactive, allowing users to hover over bars to get exact counts or percentages. - **Custom Visualizations**: You could add additional filters for other demographic characteristics, such as education level or coffee spending habits.
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+### **Technical Overview of the `coffee` Package**
+
+This section will provide a technical explanation of how to install and use the `coffee` package. It will also highlight the key functionalities available in the package for analyzing the coffee survey dataset.
+
+------------------------------------------------------------------------
+
+## **Installation**
+
+To begin using the `coffee` package, you will need to install it. If the package is hosted on GitHub or a specific repository, you can install it using `devtools`. Here’s how you can install the package:
+
+``` r
+# If the package is on GitHub:
+devtools::install_github("azham3033/Coffee")
+
+# Once installed, load the package:
+library(Coffee)
+```
+
+------------------------------------------------------------------------
+
+## **Loading the Coffee Dataset**
+
+The primary dataset for analysis is included within the `Coffee` package. After loading the package, you can load the cleaned coffee survey dataset using the following command:
+
+``` r
+# Load the dataset into the R environment
+data("coffee_filtered", package = "Coffee")
+
+# View the first few rows of the dataset
+head(coffee_filtered)
+```
+
+The dataset contains a cleaned version of the original coffee survey and includes columns such as: - `id`: Unique identifier for each respondent. - `age`: Age group of the respondent. - `cups`: Number of cups of coffee consumed per day. - `brew`: Preferred brew method. - `gender`: Gender of the respondent. - `purchase`: Type of coffee purchase (e.g., in-store or online). - `total_spend`: Total amount spent on coffee in a month. - `spent_equipment`: Amount spent on coffee brewing equipment. - `favorite`: Favorite type of coffee.
+
+------------------------------------------------------------------------
+
+## **Key Functionalities**
+
+The primary purpose of the `coffee` package is to help users analyze coffee consumption patterns using the survey data. The package provides a number of built-in functionalities and the ability to create visualizations. Below are the key types of analyses that can be performed:
+
+### **1. Age Group Analysis**
+
+You can filter the dataset to analyze coffee preferences based on age groups. For example:
+
+``` r
+# Filter data by age group (e.g., 25-34 years old)
+age_filtered <- coffee_filtered %>%
+  filter(age == "25-34 years old")
+```
+
+### **2. Favorite Coffee Analysis**
+
+Examine the distribution of favorite coffee types among different age groups or genders:
+
+``` r
+# Count the number of respondents who prefer each coffee type
+coffee_filtered %>%
+  count(favorite) %>%
+  arrange(desc(n))
+```
+
+### **3. Gender-Based Analysis**
+
+Analyze coffee preferences based on gender. For instance, you can examine the coffee types that male and female respondents prefer:
+
+``` r
+# Analyze coffee preferences by gender
+coffee_survey_filtered %>%
+  group_by(gender, favorite) %>%
+  count()
+```
+
+### **4. Data Visualization**
+
+You can create a variety of visualizations using `ggplot2` to analyze coffee preferences and demographics. For example:
+
+``` r
+library(ggplot2)
+
+# Visualization of favorite coffee types by gender
+ggplot(coffeefiltered, aes(x = favorite, fill = gender)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Favorite Coffee by Gender",
+       x = "Favorite Coffee Type",
+       y = "Count")
+```
+
+------------------------------------------------------------------------
+
+## **Summary of Analytical Steps**
+
+The `coffee` package provides the tools to:
+
+1\. **Load and Explore the Dataset**: Access the cleaned survey data and inspect key variables like age, favorite coffee, and gender.
+
+2.  **Filter Data**: Narrow down the dataset based on age groups, gender, and coffee preferences.
+
+3\. **Conduct Descriptive Analysis**: Summarize the data by calculating counts or proportions for different coffee types, age groups, and gender segments.
+
+4\. **Create Visualizations**: Use functions like `ggplot2` to generate bar charts, histograms, and other plots to visualize coffee drinking habits across various demographics.
+
+------------------------------------------------------------------------
+
+By following these steps, users can effectively perform exploratory data analysis on coffee consumption patterns using the `coffee` package, uncovering key insights and trends in the data.
+
+## **Launching the Shiny App**
+
+The `coffee` package includes an interactive Shiny app that allows users to explore coffee consumption data using a graphical interface. The app provides filters to select **Age Group**, **Favorite Coffee Type**, and **Gender**. It generates visualizations based on these filters, helping users identify patterns and trends in coffee preferences.
+
+### **How to Launch the App**
+
+After installing the `coffee` package, you can launch the Shiny app using the `launch_app()` function. The steps below explain how to start the app:
+
+1.  **Launch the Shiny App**: The `launch_app()` function will start the Shiny app, which will open in your default web browser.
+
+    Use the following command 'launch_app()' in console to launch the app
+
+Once the app is launched, you will see an interactive interface that lets you:
+
+-   Select **Age Group** (e.g., 25-34 years old).
+
+-   Select **Favorite Coffee Type** (e.g., Latte, Espresso).
+
+-   Select **Gender** (Male or Female).
+
+### **Behind the Scenes**
+
+The `launch_app()` function is designed to automatically load the Shiny app included in the `coffee` package. Internally, it runs the necessary code to initialize the app, load the data, and render the UI and server functions that make the app interactive. No additional setup is required from the user after installation.
+
+### **Conclusion**
+
+-   The Coffee Preferences Shiny App is designed to help users visualize coffee consumption patterns through interactive graphs. By adjusting the filters in the Sidebar Panel, you can view graphical representations of data tailored to specific demographics and coffee preferences. The app’s interface is intuitive, and the graphs are updated immediately based on your selected filters.
+
+Feel free to experiment with different combinations of filters to uncover trends and insights from the coffee survey data!
