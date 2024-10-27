@@ -13,7 +13,8 @@ Explore coffee preferences interactively using the Shiny app included
 with this package, allowing you to filter data and view results in
 various visualizations tailored to your preferences.
 
-You can view a comprehensive guide to this package on its website.
+You can view a comprehensive guide to this package on its
+[website](%22https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-Azham3033/index.html%22).
 
 **NOTE**: When launching the RShiny app, there may be a short delay as
 the app loads the data. Please allow the app approximately 10-20 seconds
@@ -26,11 +27,8 @@ You can install the development version of the **Coffee** package from
 GitHub with:
 
 ``` r
-devtools::install_github("azham3033/Coffee")
+devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Azham3033")
 ```
-
-This example provides a bar plot showing the average daily coffee
-consumption by age group based on the `coffee` dataset.
 
 ## Shiny App
 

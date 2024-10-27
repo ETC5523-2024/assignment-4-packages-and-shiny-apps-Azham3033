@@ -9,7 +9,7 @@ data("coffee_filtered", package = "Coffee")
 
 ui <- fluidPage(theme = shinytheme("journal"),
                 titlePanel("Coffee Preferences Explorer"),
-                shinythemes::themeSelector(),
+                #shinythemes::themeSelector(),
                 sidebarLayout(
                   sidebarPanel(
                     # Input for selecting age group
