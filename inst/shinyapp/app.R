@@ -1,17 +1,3 @@
-#' Coffee Preferences Shiny App
-#'
-#' This app allows users to explore coffee consumption patterns based on age, gender,
-#' and favorite coffee preferences. Users can filter data by age group, gender,
-#' and favorite coffee type and visualize the results using bar plots.
-#'
-#' @import shiny
-#' @import tidyverse
-#' @import shinythemes
-#' @importFrom dplyr filter group_by summarise arrange
-#' @importFrom ggplot2 ggplot aes geom_bar geom_text facet_wrap facet_grid labs theme_minimal theme element_text scale_y_continuous
-#'
-#' @export
-#'
 # Load necessary libraries
 library(shiny)
 library(tidyverse)
@@ -20,13 +6,7 @@ library(shinythemes)
 # Load the cleaned coffee survey data from the package
 data("coffee_filtered", package = "Coffee")
 
-#' Define UI for Coffee Preferences Shiny App
-#'
-#' This UI includes three inputs for filtering the data: Age Group, Gender, and Favorite Coffee.
-#' It outputs two bar plots: one for Age Group distribution by gender and another for Favorite Coffee distribution by age and gender.
-#'
-#' @return A Shiny UI object
-#'
+
 ui <- fluidPage(theme = shinytheme("journal"),
                 titlePanel("Coffee Preferences Explorer"),
                 shinythemes::themeSelector(),
@@ -67,25 +47,9 @@ ui <- fluidPage(theme = shinytheme("journal"),
                 )
 )
 
-#' Define Server logic for Coffee Preferences Shiny App
-#'
-#' The server function contains reactive expressions that filter the dataset based on user inputs for
-#' age group, gender, and favorite coffee. It outputs two graphs: Age Group Distribution by Gender
-#' and Favorite Coffee by Age and Gender.
-#'
-#' @param input Shiny input object that takes user selections for filters
-#' @param output Shiny output object to render plots based on filtered data
-#'
-#' @return A Shiny server function
-#'
+
 server <- function(input, output) {
 
-  #' Reactive expression to filter data based on user inputs
-  #'
-  #' This reactive function filters the data based on the selected age group, gender,
-  #' and favorite coffee. If "All" is selected for any input, the data is not filtered on that parameter.
-  #'
-  #' @return A filtered data frame
   filtered_data <- reactive({
     data <- coffee_filtered
 
@@ -107,11 +71,6 @@ server <- function(input, output) {
     data
   })
 
-  #' Plot: Age Group Distribution by Gender
-  #'
-  #' This plot shows the distribution of respondents by age group, with facets for male and female.
-  #'
-  #' @return A ggplot object showing the count of respondents in each age group for each gender
   output$age_gender_plot <- renderPlot({
     coffee_summary <- filtered_data() %>%
       group_by(age, gender) %>%
@@ -130,11 +89,6 @@ server <- function(input, output) {
       scale_y_continuous(breaks = seq(0,1500, by = 250), limits = c(0, 1500))
   })
 
-  #' Plot: Favorite Coffee by Age and Gender
-  #'
-  #' This plot displays the count of respondents who prefer different coffee types, separated by gender.
-  #'
-  #' @return A ggplot object showing the count of respondents for each favorite coffee by gender
   output$favorite_plot <- renderPlot({
     # Summarize the data
     favorite_summary <- filtered_data() %>%
@@ -159,9 +113,4 @@ server <- function(input, output) {
   })
 }
 
-#' Run the Coffee Preferences Shiny App
-#'
-#' This function launches the Shiny app for exploring coffee consumption patterns.
-#' @export
-#'
 shinyApp(ui = ui, server = server)

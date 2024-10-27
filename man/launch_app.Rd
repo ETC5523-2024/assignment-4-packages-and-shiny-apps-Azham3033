@@ -11,20 +11,13 @@ This function launches the Coffee Preferences Shiny app, which allows users to e
 coffee consumption patterns based on various demographic variables such as age group,
 gender, and favorite coffee type. The app provides interactive visualizations for analyzing
 these preferences.
-}
-\details{
+
 The Shiny app is located inside the package and can be launched using this function.
 It uses pre-processed survey data (\code{coffee_filtered}) to generate the visualizations.
-
+}
+\details{
 When the \code{launch_app()} function is called, it loads and runs the Shiny app located
 inside the package's "shinyapp" directory. The app includes inputs for selecting age group,
 gender, and favorite coffee preferences, and provides bar plots to visualize the distribution of
 respondents based on these selections.
-}
-\examples{
-# To run the Coffee Preferences Shiny app:
-\dontrun{
-launch_app()
-}
-
 }

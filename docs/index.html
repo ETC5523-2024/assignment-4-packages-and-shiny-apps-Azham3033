@@ -38,6 +38,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
+<li class="nav-item"><a class="nav-link" href="https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-Azham3033/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -45,9 +46,41 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-This package provides tools and a Shiny app for exploring the coffee survey dataset.
-  </main><aside class="col-md-3"><div class="license">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="coffee">Coffee<a class="anchor" aria-label="anchor" href="#coffee"></a>
+</h1></div>
+<p>The <strong>coffee</strong> package provides tools and interactive features to analyze coffee consumption patterns based on survey data. This package includes a variety of functions for statistical analysis and an RShiny app to help users visualize coffee preferences by demographic factors, such as age group, gender, and favorite coffee type.</p>
+<p>Explore coffee preferences interactively using the Shiny app included with this package, allowing you to filter data and view results in various visualizations tailored to your preferences.</p>
+<p>You can view a comprehensive guide to this package on its website.</p>
+<p><strong>NOTE</strong>: When launching the RShiny app, there may be a short delay as the app loads the data. Please allow the app approximately 10-20 seconds to fully initialize, as it loads and processes the coffee survey dataset.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the development version of the <strong>Coffee</strong> package from GitHub with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"azham3033/Coffee"</span><span class="op">)</span></span></code></pre></div>
+<p>This example provides a bar plot showing the average daily coffee consumption by age group based on the <code>coffee</code> dataset.</p>
+</div>
+<div class="section level2">
+<h2 id="shiny-app">Shiny App<a class="anchor" aria-label="anchor" href="#shiny-app"></a>
+</h2>
+<p>The <code>coffee</code> package also includes an interactive Shiny app for exploring coffee survey data. To launch the app, use the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-Azham3033/">Coffee</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>The app enables you to:</p>
+<p>Filter the data by age group, gender, and favorite coffee type. View visualizations of coffee preferences segmented by demographics. Discover trends and insights into coffee consumption patterns.</p>
+<hr>
+</div>
+</div>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-Azham3033/">Browse source code</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>

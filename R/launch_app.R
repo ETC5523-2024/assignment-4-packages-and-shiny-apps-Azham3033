@@ -1,5 +1,6 @@
 #' Launch the Coffee Preferences Shiny App
 #'
+#' @description
 #' This function launches the Coffee Preferences Shiny app, which allows users to explore
 #' coffee consumption patterns based on various demographic variables such as age group,
 #' gender, and favorite coffee type. The app provides interactive visualizations for analyzing
@@ -14,14 +15,10 @@
 #' gender, and favorite coffee preferences, and provides bar plots to visualize the distribution of
 #' respondents based on these selections.
 #'
-#' @examples
-#' # To run the Coffee Preferences Shiny app:
-#' \dontrun{
-#' launch_app()
-#' }
 #'
 #' @export
 launch_app <- function() {
-  shiny::runApp(system.file("shinyapp", package = "Coffee"))
+  app_dir <- system.file("shinyapp", package = "Coffee")
+  shiny::runApp(app_dir, display.mode = "normal")
 }
 

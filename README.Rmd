@@ -13,44 +13,39 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Coffee_
+# Coffee
 
-<!-- badges: start -->
-<!-- badges: end -->
+The **coffee** package provides tools and interactive features to analyze coffee consumption patterns based on survey data. This package includes a variety of functions for statistical analysis and an RShiny app to help users visualize coffee preferences by demographic factors, such as age group, gender, and favorite coffee type.
 
-# Coffee Survey Package
-This package contains an analysis of the coffee survey dataset. It includes functions to explore and visualize the data interactively.
+Explore coffee preferences interactively using the Shiny app included with this package, allowing you to filter data and view results in various visualizations tailored to your preferences.
+
+You can view a comprehensive guide to this package on its website.
+
+**NOTE**: When launching the RShiny app, there may be a short delay as the app loads the data. Please allow the app approximately 10-20 seconds to fully initialize, as it loads and processes the coffee survey dataset.
 
 ## Installation
 
-You can install the development version of Coffee from [GitHub](https://github.com/) with:
+You can install the development version of the **Coffee** package from GitHub with:
 
-``` r
-# install.packages("pak")
-pak::pak("ETC5523-2024/assignment-4-packages-and-shiny-apps-Azham3033")
+```{r github,eval=FALSE}
+devtools::install_github("azham3033/Coffee")
 ```
 
-## Example
 
-This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+This example provides a bar plot showing the average daily coffee consumption by age group based on the `coffee` dataset.
+
+## Shiny App
+
+The `coffee` package also includes an interactive Shiny app for exploring coffee survey data. To launch the app, use the following command:
+
+```{r shinyapp, eval=FALSE}
 library(Coffee)
-## basic example code
+launch_app()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+The app enables you to:
 
-```{r cars}
-summary(cars)
-```
+Filter the data by age group, gender, and favorite coffee type. View visualizations of coffee preferences segmented by demographics. Discover trends and insights into coffee consumption patterns.
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+------------------------------------------------------------------------

@@ -12,6 +12,11 @@ RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)
 LazyData: true
+Imports:
+    tidyverse,
+    shiny,
+    shinythemes
+URL: https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-Azham3033/
 Suggests: 
     knitr,
     rmarkdown
